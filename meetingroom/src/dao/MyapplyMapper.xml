@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.MyapplyMapper" >
+  <resultMap id="BaseResultMap" type="Pojo.Mr_apply" >
+   <result column="user_name" property="user_name" jdbcType="VARCHAR" />
+   <result column="mr_id" property="mr_id" jdbcType="VARCHAR" />
+   <result column="apply_res" property="apply_res" jdbcType="VARCHAR" />
+   <result column="start_time" property="start_time" jdbcType="VARCHAR" />
+   <result column="end_time" property="end_time" jdbcType="VARCHAR" />
+   <result column="todate" property="todate" jdbcType="VARCHAR" />
+   <result column="mr_name" property="mr_name" jdbcType="VARCHAR" />
+   <result column="ref_res" property="ref_res" jdbcType="VARCHAR" />
+   <result column="mr_state" property="mr_state" jdbcType="INTEGER" />
+	<result column="fromdate" property="fromdate" jdbcType="VARCHAR" />
+
+   
+  </resultMap>
+  <select id="MyapplyAgree" parameterType="String" resultMap="BaseResultMap" >
+  		select * from mr_apply where user_name = #{user_name} and mr_state='1'
+  
+  </select>
+  <select id="MyapplydisAgree" parameterType="String" resultMap="BaseResultMap" >
+  		select * from mr_apply where user_name = #{user_name} and mr_state='0' 
+  </select>
+  <select id="Myapplyneedplay" parameterType="String" resultMap="BaseResultMap" >
+  		select * from mr_apply where user_name = #{user_name} and mr_state='-1'
+  </select>
+    <select id="findapplybytime" parameterType="Pojo.Mr_apply" resultMap="BaseResultMap">
+  		select * from mr_apply where start_time like  "%"#{fromdate}"%"  and mr_state='1' order by start_time 
+  </select>
+  <insert id="addmyapply" parameterType="Pojo.Mr_apply" >
+  		insert into mr_apply(mr_id,mr_name,user_name,apply_res,start_time,end_time,mr_state)
+  		values(#{mr_id},#{mr_name},#{user_name},#{apply_res},#{start_time},#{end_time},-1)
+  
+  </insert>
+</mapper>

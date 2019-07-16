@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/admin/index.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/user/houselist.jsp=UTF-8
+encoding//src/controller/HoustlistController.java=UTF-8
+encoding//src/controller/UserlistController.java=UTF-8
+encoding//src/controller/ZulistController.java=UTF-8
